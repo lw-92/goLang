@@ -26,7 +26,7 @@ func TestAccessNotExistingKey(t *testing.T) {
 	//那么怎么判断值不存在了
 
 	if v, ok := m[3]; ok {
-		t.Log("exiting 3 %d", v)
+		t.Logf("exiting 3 %d", v)
 	} else {
 		t.Log("not existing 3")
 	}
