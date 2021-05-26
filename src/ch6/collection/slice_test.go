@@ -37,3 +37,18 @@ func TestGrowing(t *testing.T) {
 	}
 
 }
+
+/**
+共享存储空间的测试
+*/
+func TestSliceShareMemory(t *testing.T) {
+	year := []string{"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"}
+	Q2 := year[3:6]
+	t.Log(Q2, len(Q2), cap(Q2)) //为什么cap 是9 ，因为 截取的原来的空间，后续的空间是不变的
+	summer := year[5:8]
+	t.Log(summer, len(summer), cap(summer))
+	// 这里修改summer的数据,Q2的数据也会改变，因为是共享空间
+	summer[0] = "Unknown"
+	t.Log(Q2)
+
+}
