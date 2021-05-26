@@ -30,7 +30,7 @@ func TestSlice(t *testing.T) {
 2倍扩展
 */
 func TestGrowing(t *testing.T) {
-	s := []int{}
+	var s []int
 	for i := 0; i < 10; i++ {
 		s = append(s, i) // 存储空间扩容时,存储空间的地址有变化，所以需要重新赋值
 		t.Log(len(s), cap(s), s)
