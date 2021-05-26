@@ -31,3 +31,11 @@ func TestAccessNotExistingKey(t *testing.T) {
 		t.Log("not existing 3")
 	}
 }
+
+func TestTravelMap(t *testing.T) {
+	m := map[int]int{1: 1, 2: 2, 3: 3}
+	for k, v := range m {
+		t.Log(k, v)
+	}
+
+}
