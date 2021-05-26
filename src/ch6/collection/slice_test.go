@@ -8,6 +8,7 @@ import "testing"
  ptr 一个指针，指向内部的一个数组
 len 元素的个数
 cap 内部数组的容量
+切片 不能做比较，只能和空做比较
 */
 func TestSlice(t *testing.T) {
 	var s0 []int            //不需要说明长度
@@ -37,6 +38,12 @@ func TestGrowing(t *testing.T) {
 	}
 
 }
+
+//func TestCompareSlice(t *testing.T) {
+//	a := []int{1, 2, 3, 4}
+//	b := []int{1, 2, 3, 4}
+//	t.Log(a == b) // 是不能比较的
+//}
 
 /**
 共享存储空间的测试
