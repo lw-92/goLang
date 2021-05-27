@@ -49,4 +49,30 @@ func TestFn(t *testing.T) {
 	spent := timeSpent(slowFunc)
 	i := spent(10)
 	t.Log(i)
+	t.Log(sum(1, 2, 3))
+	t.Log(sum(3, 4, 5, 7))
+}
+
+/**
+可变长参数
+*/
+func sum(ops ...int) int {
+	s := 0
+	for _, op := range ops {
+		s += op
+	}
+	return s
+}
+
+/**
+函数 延迟执行
+*/
+func TestDeferFunc(t *testing.T) {
+	// 相当于finally
+	defer func() {
+		t.Log("clear resource")
+	}()
+
+	t.Log(sum(1, 2, 3))
+	panic("error") // 抛出错误
 }
