@@ -1,6 +1,10 @@
 package ch9
 
-import "testing"
+import (
+	"strconv"
+	"strings"
+	"testing"
+)
 
 /**
 string 是数据类型，不是引用或指针
@@ -29,4 +33,26 @@ func TestStringToRune(t *testing.T) {
 	for _, c := range s {
 		t.Logf("%[1]c %[1]x", c) //%[1]c %[1]d 都取用第一个参数，用c 和d 格式化
 	}
+}
+
+func TestStrFunc(t *testing.T) {
+	s := "A,B,C"
+	split := strings.Split(s, ",")
+	// 第一参数位error
+	for _, part := range split {
+		t.Log(part)
+	}
+	join := strings.Join(split, "=")
+	t.Log(join)
+
+}
+func TestStrToInt(t *testing.T) {
+	i := 10
+	s := strconv.Itoa(i)
+	t.Log(s)
+	atoi, err := strconv.Atoi("10")
+	if err == nil {
+		t.Log(10 + atoi)
+	}
+
 }
