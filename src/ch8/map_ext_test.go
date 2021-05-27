@@ -13,3 +13,26 @@ func TestMapWithFuncValue(t *testing.T) {
 	t.Log(m[1](2), m[2](2), m[3](2))
 
 }
+
+/**
+用map来实现set
+*/
+func TestMapToSet(t *testing.T) {
+	mySet := map[int]bool{}
+	mySet[1] = true
+	n := 1
+	if mySet[n] {
+		t.Logf("%d is existing", n)
+	} else {
+		t.Logf("%d is not existing", n)
+	}
+	t.Log(len(mySet))
+	// 删除元素
+	delete(mySet, n)
+	t.Log(len(mySet))
+	if mySet[n] {
+		t.Logf("%d is existing", n)
+	} else {
+		t.Logf("%d is not existing", n)
+	}
+}
