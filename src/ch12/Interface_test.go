@@ -35,16 +35,31 @@ func TestClient(t *testing.T) {
 	t.Log(p.WriteHelloWorld())
 }
 
-// 自定义类型
+// 自定义类型,用来替换一些复杂的类型，比如函数作为参数
 
 /**
 计算某一个函数的执行时间
 */
-func timeSpent(inner func(op int) int) func(op int) int {
+type IntConv func(op int) int
+
+func timeSpent(inner IntConv) IntConv {
 	return func(n int) int {
 		now := time.Now()
 		i := inner(n)
 		fmt.Println("time spend:", time.Since(now).Seconds())
 		return i
 	}
+}
+
+/**
+模拟慢函数
+*/
+func slowFunc(op int) int {
+	time.Sleep(time.Second * 1)
+	return op
+}
+
+func TestCustomerType(t *testing.T) {
+	spent := timeSpent(slowFunc)
+	spent(1)
 }
