@@ -50,6 +50,11 @@ func (e *Employee) String1() string {
 	return fmt.Sprintf("id:%s-name :%s-age:%d", e.Id, e.Name, e.Age)
 }
 
+func (e *Employee) change() string {
+	e.Id = "new id"
+	return fmt.Sprintf("id:%s-name :%s-age:%d", e.Id, e.Name, e.Age)
+}
+
 func TestStructOperations(t *testing.T) {
 	employee := Employee{"0", "liwei", 20}
 	fmt.Printf("1111adress is %x", unsafe.Pointer(&employee.Name))
@@ -59,4 +64,9 @@ func TestStructOperations(t *testing.T) {
 	e := &Employee{"0", "liwei", 20}
 	fmt.Printf("adress is %x", unsafe.Pointer(&e.Name))
 	t.Log(e.String1())
+	// 指针的值会改变
+	e.change()
+	fmt.Println("after change", e)
+	employee.change() // 对象也会改变
+	fmt.Println("employedd change", employee)
 }
