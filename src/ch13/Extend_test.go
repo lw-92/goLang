@@ -27,7 +27,8 @@ dog 如何继承Pet,扩展
 //	p *Pet
 //}
 /**
-匿名嵌套类型
+匿名嵌套类型，相当于直接继承了Pet 的所有方法
+但是不能重载方法。
 */
 type Dog struct {
 	Pet
@@ -36,4 +37,5 @@ type Dog struct {
 func TestDog(t *testing.T) {
 	d := new(Dog)
 	d.SpeakTo("222")
+
 }
