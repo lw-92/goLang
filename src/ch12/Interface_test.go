@@ -1,7 +1,14 @@
 package ch12
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+	"time"
+)
 
+/**\
+接口变量
+*/
 type Programmer interface {
 	WriteHelloWorld() string
 }
@@ -26,4 +33,18 @@ func TestClient(t *testing.T) {
 	t.Log(p.WriteHelloWorld())
 	p = new(JavaProgrammer)
 	t.Log(p.WriteHelloWorld())
+}
+
+// 自定义类型
+
+/**
+计算某一个函数的执行时间
+*/
+func timeSpent(inner func(op int) int) func(op int) int {
+	return func(n int) int {
+		now := time.Now()
+		i := inner(n)
+		fmt.Println("time spend:", time.Since(now).Seconds())
+		return i
+	}
 }
